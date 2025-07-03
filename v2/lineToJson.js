@@ -149,7 +149,7 @@ function jsonSetter(resultJson, head, value, headIdx) {
     // try to read the value from the result, after converting to make sure the JSON is valid
     var result = get_1.default(JSON.parse(JSON.stringify(resultJson)), head);
     if (typeof result === "undefined") {
-        throw CSVError_1.default.set_value_failed(headIdx);
+        throw CSVError_1.default.set_value_failed(headIdx, head);
     }
 }
 function checkType(item, head, headIdx, conv) {

@@ -177,7 +177,7 @@ function jsonSetter(
   // try to read the value from the result, after converting to make sure the JSON is valid
   const result = get(JSON.parse(JSON.stringify(resultJson)), head);
   if (typeof result === "undefined") {
-    throw CSVError.set_value_failed(headIdx);
+    throw CSVError.set_value_failed(headIdx, head);
   }
 }
 

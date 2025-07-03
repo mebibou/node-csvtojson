@@ -13,7 +13,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var CSVError = /** @class */ (function (_super) {
     __extends(CSVError, _super);
     function CSVError(err, line, extra) {
-        var _this = _super.call(this, "Error: " + err + ". JSON Line number: " + line + (extra ? " near: " + extra : "")) || this;
+        var _this = _super.call(this, "Error: " +
+            err +
+            ". JSON Line number: " +
+            line +
+            (extra ? " near: " + extra : "")) || this;
         _this.err = err;
         _this.line = line;
         _this.extra = extra;
@@ -26,6 +30,9 @@ var CSVError = /** @class */ (function (_super) {
     CSVError.unclosed_quote = function (index, extra) {
         return new CSVError("unclosed_quote", index, extra);
     };
+    CSVError.set_value_failed = function (index, extra) {
+        return new CSVError("set_value_failed", index, extra);
+    };
     CSVError.fromJSON = function (obj) {
         return new CSVError(obj.err, obj.line, obj.extra);
     };
@@ -33,7 +40,7 @@ var CSVError = /** @class */ (function (_super) {
         return {
             err: this.err,
             line: this.line,
-            extra: this.extra
+            extra: this.extra,
         };
     };
     return CSVError;
